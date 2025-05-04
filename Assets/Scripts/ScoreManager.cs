@@ -10,26 +10,20 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance;
     [SerializeField] TMP_Text scoreText;
-
-
     public int score = 0;
     
-    /*
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        scoreText.text = "Score : " + score.ToString();
-    }
-
-    public void AddPoint()
-    {
-        score += 100;
-    }*/
-    
-    
-    void Start()
-    {
-        scoreText.text = "Score : " + score.ToString();
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
     }
 
     public void AddScore(int amount)

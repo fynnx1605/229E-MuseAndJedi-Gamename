@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -12,10 +13,12 @@ public class PlayerMovement : MonoBehaviour
         [SerializeField] float jumpforce;
         /*[SerializeField] bool isJumping;*/                                //ISJUMPING//ISJUMPING
         
+        [SerializeField] private GameObject Win;
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
             rb2d = GetComponent<Rigidbody2D>();
+            Win.SetActive(false);
         }
         // Update is called once per frame
         void Update()
@@ -27,9 +30,9 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetButtonDown("Jump") /*&& !isJumping*/)               //ISJUMPING//ISJUMPING
             {
                 rb2d.AddForce(new Vector2(rb2d.velocity.x, jumpforce));
-                Debug.Log("Jump");
             }
         }
+        
         /*public void OnCollisionEnter2D(Collision2D other)
         {
             if (other.gameObject.CompareTag("Ground"))
@@ -44,14 +47,20 @@ public class PlayerMovement : MonoBehaviour
                 isJumping = true;
             }
         }*/
+        
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.CompareTag("PointMush"))
+            int currentScore = ScoreManager.Instance.score;
+            
+            
+            if (other.CompareTag("Finish"))
             {
-                Debug.Log("PointMushHit");
-                /*scoreManager.AddScore(100);*/
-                /*Destroy(other.gameObject);*/
-                other.gameObject.SetActive(false);
+                if (currentScore >= 500)
+                {
+                    Win.SetActive(true);
+                    Time.timeScale = 0f; //freeze screen
+                }
             }
         }
+
 }
