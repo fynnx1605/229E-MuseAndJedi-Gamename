@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
         float move;
         [SerializeField]float speed;
         [SerializeField] float jumpforce;
-        /*[SerializeField] bool isJumping;*/                                //ISJUMPING//ISJUMPING
+        [SerializeField] bool isJumping;                                //ISJUMPING//ISJUMPING
         
         [SerializeField] private GameObject Win;
         // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -27,13 +27,13 @@ public class PlayerMovement : MonoBehaviour
             rb2d.AddForce(moveInput*speed);
             /*move = Input.GetAxis("Horizontal");
             rb2d.velocity = new Vector2(move * speed, rb2d.velocity.y);*/
-            if (Input.GetButtonDown("Jump") /*&& !isJumping*/)               //ISJUMPING//ISJUMPING
+            if (Input.GetButtonDown("Jump") && !isJumping)               //ISJUMPING//ISJUMPING
             {
                 rb2d.AddForce(new Vector2(rb2d.velocity.x, jumpforce));
             }
         }
         
-        /*public void OnCollisionEnter2D(Collision2D other)
+        public void OnCollisionEnter2D(Collision2D other)
         {
             if (other.gameObject.CompareTag("Ground"))
             {
@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 isJumping = true;
             }
-        }*/
+        }
         
         private void OnTriggerEnter2D(Collider2D other)
         {
