@@ -14,7 +14,6 @@ public class BoxGravity : MonoBehaviour
             rb.bodyType = RigidbodyType2D.Kinematic;
         }
     }
-
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Bullet"))
@@ -26,5 +25,4 @@ public class BoxGravity : MonoBehaviour
             }
         }
     }
-
 }

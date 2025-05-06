@@ -20,7 +20,6 @@ public class BulletManager : MonoBehaviour
             return;
         }
     }
-
     public void AddBullet(int amount)
     {
         bullet += amount;

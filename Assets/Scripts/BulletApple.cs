@@ -11,14 +11,9 @@ public class BulletApple : MonoBehaviour
             BulletManager.Instance.AddBullet(2);
             Destroy(gameObject);
         }
-
         if (other.CompareTag("Ground"))
         {
             Destroy(gameObject);
         }
     }
-    
-    
-    
-    
 }

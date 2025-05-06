@@ -30,5 +30,4 @@ public class ScoreManager : MonoBehaviour
         score += amount;
         scoreText.text = "Score : " + score;
     }
-
 }
