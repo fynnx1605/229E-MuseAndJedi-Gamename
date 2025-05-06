@@ -19,12 +19,6 @@ public class BoxGravity : MonoBehaviour
     {
         if (collision.CompareTag("Bullet"))
         {
-            /*if (rb != null)
-            {
-                rb.gravityScale = 1f;
-            }*/
-            /*rb.AddForce();*/
-            
             if (rb != null)
             {
                 rb.bodyType = RigidbodyType2D.Dynamic;
